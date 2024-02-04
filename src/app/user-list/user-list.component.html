@@ -1,0 +1,19 @@
+<h1>User Management</h1>
+
+<i class="fa-solid fa-plus btn btn-outline-primary" (click)="addUser()">Add user</i>
+
+<i class="fa-solid fa-search btn btn-outline-primary">
+    <input type="text" [(ngModel)]="searchTerm" (input)="filterUsers()">
+</i>
+
+<div class="cards" *ngFor="let user of filteredUsers">
+    <div class="card">
+        <i class="fa-solid fa-trash btn btn-outline-primary small" (click)="deleteUser(user.id)"></i>
+        <i class="fa-solid fa-pen btn btn-outline-primary small" (click)="editUser(user.id)"></i>
+
+        <h4 class="card-title">{{ user.name }}<i class="fa-solid fa-user"></i></h4>
+        <div class="btn-holder">
+            <a class="btn btn-outline-primary" routerLink="/user/{{ user.id }}/details" title="">Details</a>
+        </div>
+    </div>
+</div>

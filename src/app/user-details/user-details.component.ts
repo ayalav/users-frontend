@@ -11,7 +11,7 @@ import { UserDto } from 'src/open-api';
 export class UserDetailsComponent implements OnInit {
   userId: string = '';
   user: UserDto = {} as UserDto;
-  isEditMode: boolean = false;
+  mode: 'show' | 'edit' | 'create' = 'show';
 
   constructor(private route: ActivatedRoute, private userService: UserService, private router: Router) { }
 
@@ -19,11 +19,13 @@ export class UserDetailsComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       const routeDetails = this.router.url.includes('/details');
-      if (id !== null) {
+      if (id) {
         this.userId = id;
-        this.isEditMode = !routeDetails;
+        this.mode = this.router.url.includes('/details') ? 'show' : 'edit';
         this.loadUser();
       }
+      else
+        this.mode = 'create';
     });
   }
 

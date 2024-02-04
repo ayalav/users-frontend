@@ -7,7 +7,7 @@
         {{ user.name ?? 'New User' }}
     </h4>
 
-    <div class="form-group" *ngIf="isEditMode">
+    <div class="form-group" *ngIf="mode == 'create' || mode == 'edit'">
         <label for="editName"><i class="fa-solid fa-id-card"></i>Name:</label>
         <input type="text" class="form-control" id="editName" [(ngModel)]="user.name"
             name="editName">
@@ -15,20 +15,24 @@
 
     <div class="form-group">
         <label for="editEmail"><i class="fa-solid fa-envelope"></i>Email:</label>
-        <p *ngIf="!isEditMode">{{ user.email }}</p>
-        <input *ngIf="isEditMode" type="text" class="form-control" id="editEmail" [(ngModel)]="user.email"
+        <p *ngIf="mode == 'show'">{{ user.email }}</p>
+        <input *ngIf="mode == 'create' || mode == 'edit'" type="text" class="form-control" id="editEmail"
+            [(ngModel)]="user.email"
             name="editEmail">
     </div>
 
     <div class="form-group">
         <label for="editPhone"><i class="fa-solid fa-phone"></i>Phone:</label>
-        <p *ngIf="!isEditMode">{{ user.phone }}</p>
-        <input *ngIf="isEditMode" type="text" class="form-control" id="editPhone" [(ngModel)]="user.phone"
+        <p *ngIf="mode == 'show'">{{ user.phone }}</p>
+        <input *ngIf="mode == 'create' || mode == 'edit'" type="text" class="form-control" id="editPhone"
+            [(ngModel)]="user.phone"
             name="editPhone">
     </div>
 
-    <div class="btn-holder">
-        <button class="btn btn-outline-primary" (click)="saveUser()">{{ isEditMode ? 'Update' : 'Save' }}</button>
+    <div class="btn-holder" *ngIf="mode == 'create' || mode == 'edit'">
+        <button class="btn btn-outline-primary" (click)="saveUser()">
+            {{ mode == 'edit' ? 'Update User' : 'Add User' }}
+        </button>
     </div>
 
 </div>
