@@ -1,0 +1,34 @@
+<div class="card" *ngIf="user">
+
+    <i class="fa-solid fa-times btn btn-outline-primary small" (click)="cancel()"></i>
+
+    <h4 class="card-title">
+        <i class="fa-solid fa-user"></i>
+        {{ user.name ?? 'New User' }}
+    </h4>
+
+    <div class="form-group" *ngIf="isEditMode">
+        <label for="editName"><i class="fa-solid fa-id-card"></i>Name:</label>
+        <input type="text" class="form-control" id="editName" [(ngModel)]="user.name"
+            name="editName">
+    </div>
+
+    <div class="form-group">
+        <label for="editEmail"><i class="fa-solid fa-envelope"></i>Email:</label>
+        <p *ngIf="!isEditMode">{{ user.email }}</p>
+        <input *ngIf="isEditMode" type="text" class="form-control" id="editEmail" [(ngModel)]="user.email"
+            name="editEmail">
+    </div>
+
+    <div class="form-group">
+        <label for="editPhone"><i class="fa-solid fa-phone"></i>Phone:</label>
+        <p *ngIf="!isEditMode">{{ user.phone }}</p>
+        <input *ngIf="isEditMode" type="text" class="form-control" id="editPhone" [(ngModel)]="user.phone"
+            name="editPhone">
+    </div>
+
+    <div class="btn-holder">
+        <button class="btn btn-outline-primary" (click)="saveUser()">{{ isEditMode ? 'Update' : 'Save' }}</button>
+    </div>
+
+</div>
