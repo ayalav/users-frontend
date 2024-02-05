@@ -2,100 +2,65 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
 
-h1 {
-    text-align: center;
-    color: #000066;
-}
-
-.fa-plus {
-    margin-bottom: 45px;
-    margin-right: 15px;
-}
-
-.fa-search input {
-    border: none;
-    background: none;
-}
-
-.card {
-    text-align: center;
-    position: relative;
-    display: inline-block;
-    border-radius: 10px;
-    padding: 2rem;
-    width: 300px;
-    background: #000066;
-    margin: 1rem;
-    color: white;
-    transition: all 0.4s ease;
-
-    &:hover {
-        transform: scale(103%);
-    }
-
-    i {
-        font-size: 125%;
-        padding: 4px;
-    }
-
-    .fa-trash {
-        color: red !important;
-    }
-
-    .small {
-        font-size: medium;
-        float: left;
-        margin-right: 5px;
-        padding: 0.4rem !important;
-    }
-}
-
-.card-title {
-    font-size: 180%;
-}
-
-.card-text {
-    font-size: 120%;
-}
-
-a {
-    text-decoration: none;
-    position: absolute;
-    margin-bottom: 1.5rem;
-
-}
-
-.btn-holder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 4rem;
-
-    .btn {
-        border: 1px solid transparent;
-        background-image: none;
+    .card {
+        font-size: 120%;
+        text-align: center;
         display: inline-block;
-        margin-bottom: 18px;
-        cursor: pointer;
-        font-family: "Font Awesome 6 Free";
-        font-weight: 600;
-        width: 290px;
+        border-radius: 10px;
+        padding: 1.2rem;
+        width: 300px;
+        background: #000066;
+        margin: 1rem;
+        color: white;
+        transition: all 0.4s ease;
+
+        &:hover {
+            transform: scale(103%);
+        }
+
+        .card-title {
+            font-size: 180%;
+        }     
+
+        .details {
+            width: 155px;
+            font-size: 22px;
+        }
     }
 }
 
+i {
+    font-size: 125%;
+    padding: 4px;
+    margin-right: 5px;
+}
 
-.btn-outline-primary {
+.fa-trash {
+    color: red !important;
+}
+
+button {
     transition: .5s all ease;
-    border: solid 1px #000066;
-    padding: .8rem;
     color: #000066 !important;
     background-color: white;
-    border-radius: 9999px;
-    cursor: pointer;
 
     &:hover {
         background-color: #b2b2d1;
     }
 }
+
+.mini {
+    margin-right: 5px;
+}
+
+.table {
+    margin-top: 18px;
+    background-color: #000066;
+    color: white;
+    border-radius: 10px;
+    padding: 1.2rem;
+    font-size: 20px;
+}
+
+

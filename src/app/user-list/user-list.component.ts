@@ -13,6 +13,7 @@ export class UserListComponent implements OnInit {
   filteredUsers: UserDto[] = [];
   searchTerm: string = '';
   viewMode: 'card' | 'table' = 'table';
+  displayedColumns: string[] = ['id', 'name', 'email', 'phone', 'actions'];
 
 
   constructor(private userService: UserService, private router: Router) { }

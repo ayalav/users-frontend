@@ -1,38 +1,38 @@
 <div class="card" *ngIf="user">
-
-    <i class="fa-solid fa-times btn btn-outline-primary small" (click)="cancel()"></i>
+    <button mat-mini-fab class="mini" (click)="cancel()">
+        <mat-icon><i class="fa-solid fa-times"></i></mat-icon>
+    </button>
 
     <h4 class="card-title">
         <i class="fa-solid fa-user"></i>
         {{ user.name || 'New User' }}
     </h4>
 
-    <div class="form-group" *ngIf="mode == 'create' || mode == 'edit'">
-        <label for="editName"><i class="fa-solid fa-id-card"></i>Name:</label>
-        <input type="text" class="form-control" id="editName" [(ngModel)]="user.name"
-            name="editName">
-    </div>
+    <p *ngIf="mode == 'create' || mode == 'edit'">
+        <mat-form-field appearance="outline">
+            <mat-label>Name:</mat-label>
+            <input matInput [(ngModel)]="user.name">
+            <mat-icon matSuffix><i class="fa-solid fa-id-card"></i></mat-icon>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Email:</mat-label>
+            <p *ngIf="mode == 'show'">{{ user.email }}</p>
+            <input matInput *ngIf="mode == 'create' || mode == 'edit'" [(ngModel)]="user.email">
+            <mat-icon matSuffix><i class="fa-solid fa-envelope"></i></mat-icon>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Phone:</mat-label>
+            <p *ngIf="mode == 'show'">{{ user.phone }}</p>
+            <input matInput *ngIf="mode == 'create' || mode == 'edit'" [(ngModel)]="user.phone">
+            <mat-icon matSuffix><i class="fa-solid fa-phone"></i></mat-icon>
+        </mat-form-field>
+    </p>
 
-    <div class="form-group">
-        <label for="editEmail"><i class="fa-solid fa-envelope"></i>Email:</label>
-        <p *ngIf="mode == 'show'">{{ user.email }}</p>
-        <input *ngIf="mode == 'create' || mode == 'edit'" type="text" class="form-control" id="editEmail"
-            [(ngModel)]="user.email"
-            name="editEmail">
-    </div>
-
-    <div class="form-group">
-        <label for="editPhone"><i class="fa-solid fa-phone"></i>Phone:</label>
-        <p *ngIf="mode == 'show'">{{ user.phone }}</p>
-        <input *ngIf="mode == 'create' || mode == 'edit'" type="text" class="form-control" id="editPhone"
-            [(ngModel)]="user.phone"
-            name="editPhone">
-    </div>
-
-    <div class="btn-holder" *ngIf="mode == 'create' || mode == 'edit'">
-        <button class="btn btn-outline-primary" (click)="saveUser()">
-            {{ mode == 'edit' ? 'Update User' : 'Add User' }}
-        </button>
-    </div>
-
+    <button *ngIf="mode == 'create' || mode == 'edit'" class="details" mat-fab extended (click)="saveUser()">
+        {{ mode == 'edit' ? 'Update User' : 'Add User' }}
+    </button>
 </div>
