@@ -45,6 +45,10 @@ export class UserListComponent implements OnInit {
     this.router.navigate(['/user', id]);
   }
 
+  showUser(id: string) {
+    this.router.navigate(['/user', id, 'details']);
+  }
+
   addUser() {
     this.router.navigate(['/user', '']);
   }
