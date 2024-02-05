@@ -41,8 +41,13 @@
         margin-right: 5px;
     }
 
-    .details {
-        width: 255px;
-        font-size: 22px;
+    .btn-container{
+        display: flex;
+        justify-content: center;
+
+        .details {
+            width: 255px;
+            font-size: 22px;
+        }
     }
 }
