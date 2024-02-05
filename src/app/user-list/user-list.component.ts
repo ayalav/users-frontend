@@ -12,41 +12,13 @@ export class UserListComponent implements OnInit {
   users: UserDto[] = [];
   filteredUsers: UserDto[] = [];
   searchTerm: string = '';
+  viewMode: 'card' | 'table' = 'table';
 
 
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadUsers();
-    /* this.users = [
-      {
-        id: '1',
-        name: 'John Doe',
-        email: 'aa',
-        phone: '123'
-      },
-      {
-        id: '2',
-        name: 'Jane Doe',
-        email: 'bb',
-        phone: '456'
-      },
-      {
-        id: '3',
-        name: 'John Smith',
-        email: 'cc',
-        phone: '789'
-      },
-      {
-        id: '4',
-        name: 'Jane Smith',
-        email: 'dd',
-        phone: '101112'
-      }
-
-    ];
-    this.filteredUsers = this.users;
-    */
   }
 
   loadUsers() {
@@ -74,5 +46,9 @@ export class UserListComponent implements OnInit {
 
   addUser() {
     this.router.navigate(['/user', '']);
+  }
+
+  toggleView(mode: 'card' | 'table') {
+    this.viewMode = mode;
   }
 }

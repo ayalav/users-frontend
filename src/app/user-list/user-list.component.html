@@ -6,14 +6,48 @@
     <input type="text" [(ngModel)]="searchTerm" (input)="filterUsers()">
 </i>
 
-<div class="cards" *ngFor="let user of filteredUsers">
-    <div class="card">
-        <i class="fa-solid fa-trash btn btn-outline-primary small" (click)="deleteUser(user.id)"></i>
-        <i class="fa-solid fa-pen btn btn-outline-primary small" (click)="editUser(user.id)"></i>
+<div class="view-toggle">
+    <button class="btn btn-info" (click)="toggleView('card')">Cards View</button>
+    <button class="btn btn-secondary" (click)="toggleView('table')">Table View</button>
+</div>
 
-        <h4 class="card-title">{{ user.name }}<i class="fa-solid fa-user"></i></h4>
-        <div class="btn-holder">
-            <a class="btn btn-outline-primary" routerLink="/user/{{ user.id }}/details" title="">Details</a>
+<div *ngIf="viewMode === 'card'; else tableView">
+    <div class="cards" *ngFor="let user of filteredUsers">
+        <div class="card">
+            <i class="fa-solid fa-trash btn btn-outline-primary small" (click)="deleteUser(user.id)"></i>
+            <i class="fa-solid fa-pen btn btn-outline-primary small" (click)="editUser(user.id)"></i>
+
+            <h4 class="card-title">{{ user.name }}<i class="fa-solid fa-user"></i></h4>
+            <div class="btn-holder">
+                <a class="btn btn-outline-primary" routerLink="/user/{{ user.id }}/details" title="">Details</a>
+            </div>
         </div>
     </div>
 </div>
+
+<ng-template #tableView>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of filteredUsers">
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.phone }}</td>
+                <td>
+                    <i class="fa-solid fa-trash btn btn-outline-primary small" (click)="deleteUser(user.id)"></i>
+                    <i class="fa-solid fa-pen btn btn-outline-primary small" (click)="editUser(user.id)"></i>
+                    <a class="btn btn-outline-primary small" routerLink="/user/{{ user.id }}/details">Details</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</ng-template>
