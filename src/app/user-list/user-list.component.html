@@ -12,8 +12,8 @@
 </div>
 
 <div *ngIf="viewMode === 'card'; else tableView">
-    <div class="cards" *ngFor="let user of filteredUsers">
-        <div class="card">
+    <div class="cards">
+        <div class="card" *ngFor="let user of filteredUsers">
             <i class="fa-solid fa-trash btn btn-outline-primary small" (click)="deleteUser(user.id)"></i>
             <i class="fa-solid fa-pen btn btn-outline-primary small" (click)="editUser(user.id)"></i>
 
